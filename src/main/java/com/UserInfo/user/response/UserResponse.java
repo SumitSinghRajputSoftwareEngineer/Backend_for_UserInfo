@@ -14,4 +14,8 @@ public class UserResponse {
     public void setUsers(List<UserDTO> users) {
         this.users = users;
     }
+
+    public UserResponse(List<UserDTO> users) {
+        this.users = users;
+    }
 }
