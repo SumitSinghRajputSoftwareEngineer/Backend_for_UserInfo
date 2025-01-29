@@ -15,22 +15,26 @@ public class UserController {
         this.userService = userService;
     }
 
+    //to load the users from external dataset to H2 DB as well to get all the users
     @GetMapping("/load")
     public List<UserDTO> loadUsers() {
         userService.loadUsersFromExternalAPI();
         return userService.getAllUsers();
     }
 
+    //to get the user based on his role
     @GetMapping("/role/{role}")
     public List<UserDTO> getUsersByRole(@PathVariable String role) {
         return userService.getUsersByRole(role);
     }
 
+    //to get the user after sorting their age
     @GetMapping("/sort/age")
     public List<UserDTO> getUsersSortedByAge(@RequestParam boolean ascending) {
         return userService.getUsersSortedByAge(ascending);
     }
 
+    //to get the specific user
     @GetMapping("/{id}")
     public UserDTO getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
