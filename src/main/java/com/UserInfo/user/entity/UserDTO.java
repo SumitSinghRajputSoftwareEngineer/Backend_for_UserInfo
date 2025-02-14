@@ -1,6 +1,9 @@
 package com.UserInfo.user.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 
 
@@ -11,15 +14,31 @@ public class UserDTO {
     @Id
     private Long id;
 
+    @NotBlank(message = "First name cannot be empty")
     private String firstName;
+
+    @NotBlank(message = "Last name cannot be empty")
     private String lastName;
     @Column(nullable = true)
     private String maidenName;
+
+    @Min(value = 0, message = "Age cannot be negative")
     private int age;
+
+    @NotBlank(message = "Gender is required")
     private String gender;
+
+    @Email(message = "Invalid email format")
+    @NotBlank(message = "Email is required")
     private String email;
+
+    @NotBlank(message = "Phone number is required")
     private String phone;
+
+    @NotBlank(message = "Username is required")
     private String username;
+
+    @NotBlank(message = "Password is required")
     private String password;
     private String birthDate;
     private String image;
@@ -63,6 +82,10 @@ public class UserDTO {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {

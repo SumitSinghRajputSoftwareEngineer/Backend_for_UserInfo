@@ -26,7 +26,6 @@ public class UserControllerTest {
 
     @Test
     public void testLoadUsers() {
-//        when(userService.loadUsersFromExternalAPI()).thenReturn(Collections.emptyList());
         when(userService.getAllUsers()).thenReturn(Collections.emptyList());
 
         List<UserDTO> result = userController.loadUsers();
